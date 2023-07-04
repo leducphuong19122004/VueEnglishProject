@@ -71,7 +71,7 @@ import { mapState } from 'vuex'
     export default {
         data(){
             return {
-                activeElement : this.$route.path,
+                activeElement : this.$route.matched[0].path,
             }
         },
         computed: {
@@ -91,6 +91,8 @@ import { mapState } from 'vuex'
     border-right: 3px solid #B2BABB;
     padding: 0px 16px 0px 16px;
     position: fixed;
+    z-index: 9999;
+    background-color: white;
 }
 
 .logo{
@@ -157,7 +159,7 @@ a{
     position: fixed;
     left: 230px;
     top: 316px;
-    z-index: 220;
+    z-index: 9999;
     transform: none;
     background-color: white;
     display: none;

@@ -32,6 +32,7 @@ a{
     height: 64px;
     margin: 10px 20px 0px 0px;
     justify-content: space-around;
+    z-index: 9999;
 }
 
 .not-login div {
@@ -45,7 +46,7 @@ a{
     font-weight: 700;
     letter-spacing: .8px;
     text-transform: uppercase;
-    color: #797D7F ;
+    color: white ;
     width: 100px;
     height: 40px;
     border-radius: 15px;

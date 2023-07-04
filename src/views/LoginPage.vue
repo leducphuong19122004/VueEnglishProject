@@ -180,6 +180,7 @@ button{
   font-weight: 700;
   letter-spacing: .8px;
   text-transform: uppercase;
+  color: white;
 }
 
 button:hover {

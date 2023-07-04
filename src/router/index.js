@@ -6,7 +6,8 @@ import VocabularyPage from '../views/VocabularyPage.vue';
 import GrammarPage from '../views/GrammarPage.vue';
 import ExamsPage from '../views/ExamsPage.vue';
 
-import BasicVocabularyList from '../components/VocabularyComponent/BasicVocabularyList.vue';
+import IntroVocabulary from '../components/VocabularyComponent/IntroVocabulary.vue'
+import VocabularyList from '../components/VocabularyComponent/VocabularyList.vue'
 
 const routes = [
     {
@@ -24,7 +25,8 @@ const routes = [
         name: 'vocabulary',
         component: VocabularyPage,
         children : [
-            {path: '', component: BasicVocabularyList, name: 'basicVocabularyList'}
+            {path: '', component: IntroVocabulary, name: 'IntroVocabulary'},
+            {path: ':id', component: VocabularyList, name: 'VocabularyList'},
         ]
     },
     {
