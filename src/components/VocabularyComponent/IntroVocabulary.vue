@@ -79,12 +79,12 @@
   line-height: 24px;
   font-size: 20px;
 }
-.br {
-  background-color: #B2BABB;
-  height: 2px;
-  margin-right: 180px;
-  margin-left: 50px;
-}
+  .br {
+    background-color: #B2BABB;
+    height: 2px;
+    margin-right: 180px;
+    margin-left: 50px;
+  }
 .list-vocabulary {
   margin-top: 40px;
 }

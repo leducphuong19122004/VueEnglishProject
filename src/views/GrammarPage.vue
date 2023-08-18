@@ -1,6 +1,7 @@
 <template>
     <button-login-signup></button-login-signup>
     <sidebar-page></sidebar-page>
+    <router-view></router-view>
 </template>
 <script>
     import SidebarPage from '../components/SidebarPage'
