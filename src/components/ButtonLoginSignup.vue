@@ -32,7 +32,7 @@ a{
     height: 64px;
     margin: 10px 20px 0px 0px;
     justify-content: space-around;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .not-login div {
@@ -51,9 +51,13 @@ a{
     height: 40px;
     border-radius: 15px;
     background-color: #4ee70c;
+    box-shadow: 0 4px #0a9d25;
     display: flex;
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
+}
+.not-login div a:hover {
+    opacity: 0.8;
 }
 </style>

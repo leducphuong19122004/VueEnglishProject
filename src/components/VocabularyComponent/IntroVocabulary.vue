@@ -125,11 +125,15 @@
   font-family: din-round,sans-serif;
   font-size: 20px;
   background-color: #4ee70c;
+  box-shadow: 0 4px #0a9d25;
   font-weight: 700;
   letter-spacing: .8px;
   text-transform: uppercase;
   color: white ;
   border: none;
+}
+.item button:hover {
+  opacity: 0.8;
 }
 
 .item p {

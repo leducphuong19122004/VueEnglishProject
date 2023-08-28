@@ -91,7 +91,7 @@ import { mapState } from 'vuex'
     border-right: 3px solid #B2BABB;
     padding: 0px 16px 0px 16px;
     position: fixed;
-    z-index: 9999;
+    z-index: 1;
     background-color: white;
 }
 

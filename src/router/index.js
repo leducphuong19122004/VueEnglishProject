@@ -26,6 +26,8 @@ import LessonNumber11 from '../components/GrammarComponent/GrammarLessonComponen
 import LessonNumber12 from '../components/GrammarComponent/GrammarLessonComponent/LessonNumber12.vue'
 import LessonNumber13 from '../components/GrammarComponent/GrammarLessonComponent/LessonNumber13.vue'
 
+import TestPage from '../views/TestPage.vue'
+
 const routes = [
     {
         path: '/login',
@@ -72,7 +74,12 @@ const routes = [
     {
         path: '/exams',
         name: 'exams',
-        component: ExamsPage
+        component: ExamsPage,
+    },
+    {
+        path: '/exams/test',
+        name: 'test',
+        component: TestPage
     }
 ]
 

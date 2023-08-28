@@ -134,8 +134,12 @@ export default {
     letter-spacing: .8px;
     /* border: solid 2px #4ee70c; */
     background-color: #4ee70c;
+    box-shadow: 0 4px #0a9d25;
     border-radius: 20px;
     padding: 10px;
+  }
+  .practice-button a:hover {
+    opacity: 0.8;
   }
   .back-button,
   .next-button {
