@@ -105,6 +105,7 @@ import { mapMutations } from 'vuex'
   border-radius: 15px;
   width: 100px;
   background-color: white;
+  box-shadow: 0px 4px 0px 1px #C0C0C0;
   height: 40px;
   display: flex;
   align-items: center;
@@ -132,6 +133,7 @@ import { mapMutations } from 'vuex'
 .form {
     margin: auto;
     background-color : white;
+    box-shadow: 0px 5px 0px 1px #C0C0C0;
     width : 350px;
     height : 450px;
     border-radius: 50px;
@@ -174,6 +176,7 @@ button{
   border-radius: 10px;
   border: none;
   background-color: #4ee70c;
+  box-shadow: 0 4px #0a9d25;
   font-family: 'Geologica', sans-serif;
   cursor: pointer;
   font-size: 20px;

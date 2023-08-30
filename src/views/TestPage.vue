@@ -18,10 +18,10 @@
                         <span class="box-answer" @click="setActive(x, $event)">C</span>
                         <span class="box-answer" @click="setActive(x, $event)">D</span>
                     </div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/2814/2814368.png" alt="red flag icon" class="red-flag-icon" @click="setRedflag">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2814/2814368.png" alt="red flag icon" class="red-flag-icon" @click="setRedflag(x, $event)">
                 </div>
             </div>
-            <div class="finish-test" @click="finishTest()">
+            <div class="finish-test" @click="showPopupFunction()">
                 <span>Nộp bài</span>
             </div>
         </div>
@@ -29,6 +29,23 @@
             <iframe :src="pdfUrl" frameborder="0" width="100%" height="100%"></iframe>
         </div>
     </div>
+    <div class="finish-popup-container" v-show="showPopup">
+            <div class="background-popup"></div>
+            <div class="finish-popup">
+                <div class="container">
+                    <div class="header">
+                        <span>Bạn có muốn thay đổi không ?</span>
+                    </div>
+                    <div class="caution">
+                        <span>Bạn có {{ 50 - this.numberAnswer }} câu chưa điền và {{ this.redFlag }} câu đánh dấu</span>
+                    </div>
+                    <div class="button">
+                        <span @click="showPopupFunction()">CÓ</span>
+                        <span >KHÔNG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 </template>
 <script>
 export default {
@@ -41,8 +58,11 @@ export default {
             },
             timeOut: false,
             answers: [],
+            numberAnswer: 0,
+            redFlag: 0,
             year: this.$route.query.year,
             code: this.$route.query.code,
+            showPopup: false
         }
     },
     computed: {
@@ -57,16 +77,19 @@ export default {
             }
             event.target.className += ' active';
             this.answers[number - 1] = event.target.innerText;
+            this.numberAnswer++;
         },
-        setRedflag(event) {
-            if(event.target.src == "https://cdn-icons-png.flaticon.com/512/2814/2814255.png"){
+        setRedflag(number, event) {
+            if(event.target.src == "https://cdn-icons-png.flaticon.com/512/2814/2814255.png"){ // delete red flag
                 event.target.src = "https://cdn-icons-png.flaticon.com/512/2814/2814368.png";
+                this.redFlag--;
             }else {
-                event.target.src = "https://cdn-icons-png.flaticon.com/512/2814/2814255.png";
+                event.target.src = "https://cdn-icons-png.flaticon.com/512/2814/2814255.png"; // set red flag
+                this.redFlag++;
             }
         },
-        finishTest() {
-
+        showPopupFunction() {
+            this.showPopup = !this.showPopup;
         }
     },
     mounted() {
@@ -93,6 +116,7 @@ export default {
 </script>
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -218,5 +242,74 @@ export default {
 }
 .active {
     background-color: rgb(255,165,0);
+}
+
+/* style fot popup */
+.finish-popup-container {
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+.background-popup {
+    z-index: 1;
+    background-color: #090909cc;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.finish-popup {
+    width: 688px;
+    border-radius: 20px;
+    background-color: #fff;
+    z-index: 2;
+}
+.header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-family: 'Geologica', sans-serif;
+}
+.caution {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    font-family: 'Geologica', sans-serif;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px 20px 0px;
+}
+.button span {
+    width: 100px;
+    height: 55px;
+    background-color: #4ee70c;
+    box-shadow: 0 4px #0a9d25;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Geologica', sans-serif;
+    letter-spacing: .8px;
+    cursor: pointer;
+    font-weight: 700;
+    color: white ;
+    font-size: 17px;
+    margin: 0px 20px 0px 20px;
+}
+.button span:hover {
+    opacity: 0.8;
 }
 </style>

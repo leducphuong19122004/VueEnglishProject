@@ -25,7 +25,7 @@ a{
 
 .not-login {
     display: flex;
-    position: absolute;
+    position: fixed;
     right: 0;
     top : 0;
     width: 224px;
@@ -33,6 +33,7 @@ a{
     margin: 10px 20px 0px 0px;
     justify-content: space-around;
     z-index: 1;
+
 }
 
 .not-login div {
