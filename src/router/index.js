@@ -27,7 +27,8 @@ import LessonNumber12 from '../components/GrammarComponent/GrammarLessonComponen
 import LessonNumber13 from '../components/GrammarComponent/GrammarLessonComponent/LessonNumber13.vue'
 
 import TestPage from '../views/TestPage.vue'
-import ResultTestPage from '../views/ResultTestPage.vue'
+
+import NotFound from '../components/NotFound.vue'
 
 const routes = [
     {
@@ -80,12 +81,12 @@ const routes = [
     {
         path: '/exams/test',
         name: 'test',
-        component: TestPage
+        component: TestPage,
     },
     {
-        path: '/exams/test/result',
-        name: 'result',
-        component: ResultTestPage
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound', 
+        component: NotFound,
     }
 ]
 

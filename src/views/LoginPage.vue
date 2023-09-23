@@ -85,7 +85,7 @@ import { mapMutations } from 'vuex'
 @import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');
 
 .container{
-  background-color: #4ee70c;
+  background-color: #e1fee2;
   opacity: 0.8;
   width: 100vw;
   height: 100vh;

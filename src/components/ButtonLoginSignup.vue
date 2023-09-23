@@ -59,6 +59,6 @@ a{
     cursor: pointer;
 }
 .not-login div a:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 </style>
