@@ -8,7 +8,7 @@
         </div>
         <div class="sub-title">
             <p>The page you are looking for is not available !</p>
-            <button>Go to Home</button>
+            <router-link to="/" style="text-decoration: none;"><button>Go to Home</button></router-link>
         </div>
     </div>
 </template>

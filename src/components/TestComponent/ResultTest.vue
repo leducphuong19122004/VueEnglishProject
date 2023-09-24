@@ -20,7 +20,7 @@
                     <div class="score-container">
                         <div class="score-text">
                             <h3>Điểm số</h3>
-                            <h3>8.5 / 10</h3>
+                            <h3>{{ result[50].score }} / 10</h3>
                         </div>
                         <div class="logo-score">
                             <img src="https://cdn-icons-png.flaticon.com/512/5432/5432626.png" alt="score-icon">
@@ -84,6 +84,14 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    props: ['result'],
+    mounted() {
+        console.log(this.result);
+    }
+}
+</script>
 <style scoped>
  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');
@@ -283,5 +291,11 @@
     .info-other-exam {
         margin-left: 10px;
         font-family: din-round,sans-serif;
+    }
+    .wrong-answer {
+        background-color: #FF0000;
+    }
+    .true-answer {
+        background-color: #00FF00;
     }
 </style>

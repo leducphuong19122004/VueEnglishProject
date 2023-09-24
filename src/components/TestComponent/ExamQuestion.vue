@@ -41,7 +41,7 @@
                     </div>
                     <div class="button">
                         <span @click="showPopupFunction()">CÓ</span>
-                        <router-link :to="{path: '/exams/test', query: { year: this.year, code: this.code, page: 'summary'}}" style="text-decoration: none;"><span>KHÔNG</span></router-link>
+                        <router-link :to="{path: '/exams/test', query: { year: this.year, code: this.code, page: 'summary'}}" style="text-decoration: none;" @click="passAnswer()"><span>KHÔNG</span></router-link>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,9 @@ export default {
         },
         showPopupFunction() {
             this.showPopup = !this.showPopup;
+        },
+        passAnswer() {
+            this.$emit("passAnswer", this.answers);
         }
     },
     mounted() {
