@@ -1,7 +1,7 @@
 <template>
     <div class="summary-container">
         <div class="header-container">
-            <h1>Đề thi thpt quốc gia môn tiếng anh năm 2023 mã đề 401</h1>
+            <h1>Đề thi thpt quốc gia môn tiếng anh năm {{ this.$route.query.year }} mã đề {{ this.$route.query.code }}</h1>
         </div>
         <div class="content-container">
             <div class="result-section">
@@ -38,18 +38,18 @@
                 </div>
                 <div class="buttons-container">
                     <div class="restart-button">Bắt đầu lại</div>
-                    <div class="back-homepage-button">Quay về trang chủ</div>
+                    <router-link to="/exams" style="text-decoration: none;"><div class="back-homepage-button">Quay về trang chủ</div></router-link>
                 </div>
                 <div class="answer-container">
                     <div class="title-answer-container">Xem lại các câu trả lời và đáp án</div>
                     <div class="question-review-list">
-                        <div class="single-row-answer" v-for="number in 50" :key="number">
-                            <div class="number-question">{{ number }}</div>
-                            <div class="box-answer-container">
-                                <span class="box-answer">A</span>
-                                <span class="box-answer">B</span>
-                                <span class="box-answer">C</span>
-                                <span class="box-answer">D</span>
+                        <div class="single-row-answer" v-for="x in result" :key="x.number">
+                            <div class="number-question" v-if="x.number">{{ x.number }}</div>
+                            <div class="box-answer-container" v-if="x.number">
+                                <span class="box-answer" :class="[{wrong_answer: x.falseAnswer == 'A' }, {true_answer: x.trueAnswer == 'A'}, {blank_answer: x.falseAnswer == 'A' && x.trueAnswer == null}]">A</span>
+                                <span class="box-answer" :class="[{wrong_answer: x.falseAnswer == 'B' }, {true_answer: x.trueAnswer == 'B'}, {blank_answer: x.falseAnswer == 'B' && x.trueAnswer == null}]">B</span>
+                                <span class="box-answer" :class="[{wrong_answer: x.falseAnswer == 'C' }, {true_answer: x.trueAnswer == 'C'}, {blank_answer: x.falseAnswer == 'C' && x.trueAnswer == null}]">C</span>
+                                <span class="box-answer" :class="[{wrong_answer: x.falseAnswer == 'D' }, {true_answer: x.trueAnswer == 'D'}, {blank_answer: x.falseAnswer == 'D' && x.trueAnswer == null}]">D</span>
                             </div>
                         </div>
                     </div>
@@ -86,10 +86,7 @@
 </template>
 <script>
 export default {
-    props: ['result'],
-    mounted() {
-        console.log(this.result);
-    }
+    props: ['result']
 }
 </script>
 <style scoped>
@@ -292,10 +289,13 @@ export default {
         margin-left: 10px;
         font-family: din-round,sans-serif;
     }
-    .wrong-answer {
+    .wrong_answer {
         background-color: #FF0000;
     }
-    .true-answer {
+    .true_answer {
         background-color: #00FF00;
+    }
+    .blank_answer {
+        background-color: #FFA500;
     }
 </style>

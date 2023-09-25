@@ -19,7 +19,7 @@ export default {
     },
     watch: {
         $route (to) {
-            if(to.query.page) {
+            if(to.query.page == "summary") {
                 this.view = 'ResultTest';
             }
         }
@@ -27,7 +27,8 @@ export default {
     mounted() {
         const year = this.$route.query.year;
         const code = this.$route.query.code;
-        if(year <= 2023 && year >= 2018 && code >= 401 && code <= 404 ){
+        const fullPath = "/exams/test?year=" + year + "&code=" + code;
+        if(this.$route.fullPath == fullPath){
             this.view = 'ExamQuestion';
         }
     },
