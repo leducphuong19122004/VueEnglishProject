@@ -30,6 +30,8 @@ import TestPage from '../views/TestPage.vue'
 
 import NotFound from '../components/NotFound.vue'
 
+import ProfilePage from '../views/ProfilePage.vue'
+
 const routes = [
     {
         path: '/login',
@@ -82,6 +84,11 @@ const routes = [
         path: '/exams/test',
         name: 'test',
         component: TestPage,
+    },
+    {
+        path: '/profile/:id',
+        name: 'profile',
+        component: ProfilePage,
     },
     {
         path: '/:pathMatch(.*)*',

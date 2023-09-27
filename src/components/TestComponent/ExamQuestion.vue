@@ -70,6 +70,12 @@ export default {
             return `/ExamFiles/${this.year}/${this.code}.pdf#toolbar=0&navpanes=0`;
         }
     },
+    watch: {
+        timeOut: function () {
+            const path = 'exams/test?year=' + this.year + '&code=' + this.code + '&page=summary';
+            this.$router.push({path: path});
+        }
+    },
     methods: {
         setActive(number, event) {
             for(let i = 0; i < event.target.parentNode.childNodes.length; i++){

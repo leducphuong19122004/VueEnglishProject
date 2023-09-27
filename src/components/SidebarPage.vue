@@ -34,16 +34,16 @@
                     <span>Exams</span>
                 </span>
             </router-link>
-            <a class="more-container">
+            <a class="more-container" @mouseover="this.show = true" @mouseleave="this.show = false">
                 <span class="item-container">
                     <div class="icon-item">
                         <i class='bx bx-dots-horizontal-rounded bx-rotate-90' style='color:#4ee70c; font-size: 40px'></i>
                     </div>
                     <span>More</span>
                 </span>
-                <div class="popup-container">
+                <div class="popup-container" v-if="this.show">
                     <div class="">
-                      <a href="" class="popup-item">
+                      <a href="/profile/1341324214" class="popup-item">
                         <i class='bx bx-user-circle' style='color:#4ee70c; font-size: 40px'></i>
                         <span>PROFILE</span>
                       </a>
@@ -55,7 +55,7 @@
                         <i class='bx bxs-help-circle' style='color:#4ee70c; font-size: 40px'></i>
                         <span>HELP</span>
                       </a>
-                      <a href="" class="popup-item">
+                      <a href="/" @click="logOut()" class="popup-item">
                         <i class='bx bx-log-in' style='color:#4ee70c; font-size: 40px'></i>
                         <span>LOG OUT</span>
                       </a>
@@ -67,17 +67,28 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
+import { setStore } from '@/utils/storage';
     export default {
         data(){
             return {
                 activeElement : this.$route.matched[0].path,
+                show: false
             }
         },
         computed: {
             ...mapState([
                 'login'
             ])
+        },
+        methods: {
+            ...mapMutations([
+              'RECORD_USER_LOGIN'
+            ]),
+            logOut() {
+                this.RECORD_USER_LOGIN(false);
+                setStore('status', 'false');
+            }
         }
     }
 </script>
@@ -144,9 +155,9 @@ a{
     background-color: #D5F5E3 !important;
 }
 
-.more-container:hover + .popup-container {
+/* .more-container:hover + .popup-container {
     display: block;
-}
+} */
 
 .popup-container:hover {
     display: block;
@@ -162,7 +173,7 @@ a{
     z-index: 9999;
     transform: none;
     background-color: white;
-    display: none;
+    /* display: none; */
   }
   
   .popup-container div {
