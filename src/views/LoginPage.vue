@@ -4,7 +4,7 @@
       <div class="close-container">
         <a href="/"><i class='bx bx-x' style="font-size: 40px; color: #797D7F; cursor: pointer;"></i></a>
         <div class="signup-btn">
-            <a><span>Sign up</span></a>
+            <a href="/sign-up" style="text-decoration: none; color: #696969;"><span>Sign up</span></a>
         </div>
       </div>
       <div class="form">

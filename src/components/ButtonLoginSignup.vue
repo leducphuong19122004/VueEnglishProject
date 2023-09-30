@@ -4,7 +4,7 @@
             <a href="/login"><span>Login</span></a>
         </div>
         <div class="signup-btn">
-            <a><span>Sign up</span></a>
+            <a href="/sign-up"><span>Sign up</span></a>
         </div>
     </div>
 </template>

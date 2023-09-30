@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import LoginPage from '../views/LoginPage.vue';
+import SignupPage from '../views/SignupPage.vue';
 import HomePage from '../views/HomePage.vue';
 import VocabularyPage from '../views/VocabularyPage.vue';
 import GrammarPage from '../views/GrammarPage.vue';
@@ -37,6 +38,11 @@ const routes = [
         path: '/login',
         name: 'login',
         component: LoginPage
+    },
+    {
+        path: '/sign-up',
+        name: 'sign-up',
+        component: SignupPage
     },
     {
         path: '/',
