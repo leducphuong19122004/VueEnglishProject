@@ -5,7 +5,8 @@ import getters from './getters'
 
 
 const state = {
-    login : false
+    login : false,
+    userID: null,
 }
 
 const store = createStore(

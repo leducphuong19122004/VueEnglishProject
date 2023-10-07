@@ -43,10 +43,12 @@
                 </span>
                 <div class="popup-container" v-if="this.show">
                     <div class="">
-                      <a href="/profile/1341324214" class="popup-item">
+                      <router-link :to="'/profile/' + this.userID">
+                        <a class="popup-item">
                         <i class='bx bx-user-circle' style='color:#4ee70c; font-size: 40px'></i>
                         <span>PROFILE</span>
                       </a>
+                      </router-link>
                       <a href="" class="popup-item">
                         <i class='bx bxs-cog' style='color:#4ee70c; font-size: 40px'></i>
                         <span>SETTING</span>
@@ -73,12 +75,14 @@ import { setStore } from '@/utils/storage';
         data(){
             return {
                 activeElement : this.$route.matched[0].path,
-                show: false
+                show: false,
+                userID: this.$store.state.userID
             }
         },
         computed: {
             ...mapState([
-                'login'
+                'login',
+                'userID'
             ])
         },
         methods: {
@@ -86,7 +90,11 @@ import { setStore } from '@/utils/storage';
               'RECORD_USER_LOGIN'
             ]),
             logOut() {
-                this.RECORD_USER_LOGIN(false);
+                const dataLogout = {
+                    status: false,
+                    userID: null
+                }
+                this.RECORD_USER_LOGIN(dataLogout);
                 setStore('status', 'false');
             }
         }

@@ -1,7 +1,7 @@
 <template>
 <button-login-signup></button-login-signup>
 <sidebar-page></sidebar-page>
-<not-login-page v-if="!this.login"></not-login-page>
+<not-login-page></not-login-page>
     <div class="profile" v-if="this.login">
         <div class="profile-container">
             <div class="info-user-section">
@@ -11,7 +11,7 @@
                     </div>
                     <div class="info-text">
                         <h2>Le Duc Phuong</h2>
-                        <p>ID: 1341324214</p>
+                        <p>ID: {{ userID }}</p>
                         <p>Đã tham gia vao tháng 9 năm 2023</p>
                     </div>
                 </div>
@@ -126,7 +126,8 @@ import { mapState } from 'vuex';
 export default {
     computed: {
             ...mapState([
-                'login'
+                'login',
+                'userID'
             ])
     },
     components : {

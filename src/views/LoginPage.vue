@@ -59,10 +59,14 @@ import { mapMutations } from 'vuex'
                       email : email,
                       password : password
                   }
-                  userLogin(dataLogin).then((status)=>{
-                    if (status) {
+                  userLogin(dataLogin).then(returnedData =>{
+                    if (returnedData.status) {
+                        const data = {
+                          status: returnedData.status,
+                          userID: returnedData.userID
+                        }
                         setStore('status', 'true');
-                        this.RECORD_USER_LOGIN(true);
+                        this.RECORD_USER_LOGIN(data);
                         this.$router.replace('/');
                     }else {
                       this.errMes = "Tài khoản không hợp lệ !";

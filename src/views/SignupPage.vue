@@ -16,24 +16,24 @@
                     <h1>Sign up</h1>
                 </div>
                 <div class="fill-box">
-                    <input type="text" placeholder="Tên người dùng">
+                    <input type="text" placeholder="Tên người dùng" v-model="username">
                 </div>
                 <div class="fill-box">
-                    <input type="email" placeholder="Email">
+                    <input type="email" placeholder="Email" v-model="email">
                 </div>
                 <div class="fill-box">
-                    <input type="password" placeholder="Mật khẩu">
+                    <input type="password" placeholder="Mật khẩu" v-model="password">
                     <img src="https://cdn-icons-png.flaticon.com/512/709/709724.png" alt="seen password" class="seen-password-img">
                 </div>
                 <div class="fill-box">
-                    <input type="password" placeholder="Nhập lại mật khẩu">
+                    <input type="password" placeholder="Nhập lại mật khẩu" v-model="confirmPassword">
                     <img src="https://cdn-icons-png.flaticon.com/512/709/709724.png" alt="seen password" class="seen-password-img">
                 </div>
                 <div class="check-box">
                     <input type="checkbox">
                     <p>Tôi đồng ý với các điều khoản và chính sách</p>
                 </div>
-                <div class="button-sign-up">
+                <div class="button-sign-up" @click="signUp()">
                     <button>Tạo tài khoản</button>
                 </div>
                 <div class="break-line">
@@ -55,6 +55,46 @@
         </div>
     </div>
 </template>
+<script>
+import { userSignup } from '../service/index'
+import { setStore } from '@/utils/storage'
+import { mapMutations } from 'vuex'
+export default {
+    data() {
+        return {
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        }
+    },
+    methods: {
+        ...mapMutations([
+              'RECORD_USER_LOGIN'
+        ]),
+        signUp() {
+            const data = {
+                username: this.username,
+                email: this.email,
+                password: this.password,
+            }
+           userSignup(data).then(returnedData => {
+                if (returnedData.status) {
+                    setStore('status', 'true');
+                    const data = {
+                        status: returnedData.status,
+                        userID: returnedData.userID
+                    }
+                    this.RECORD_USER_LOGIN(data);
+                    this.$router.replace('/');
+                }else {
+                    console.log("error sign up");
+                }
+           })
+        }
+    }
+}
+</script>
 <style scoped>
  @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
      @import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');

@@ -15,7 +15,7 @@
             ...mapState([
                 'login'
             ])
-        },
+        }
     }
 </script>
 <style scoped>
